@@ -5,6 +5,9 @@ int string_matching_naive(char *text, int n, char* pattern, int m){
 	for (int i=0;i<n;i++){
 		if (text[i]==pattern[count])
 			count++;
+		else
+			count=0;
+		
 		if (count==m){
 			match++;
 			count=0;
