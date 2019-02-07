@@ -27,7 +27,7 @@ int string_matching_kmp(char *text, int N, char* pattern, int M){
 		    else
 			i = i + 1; 
 		} 
-    	} 
+    } 
 	free(overlap_list);
 	return count;
 }
