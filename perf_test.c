@@ -2,6 +2,7 @@
 
 #define min 10000
 #define max 1000000
+#define step 50000
 #define m 400
 
 void perf_test (){
@@ -11,7 +12,7 @@ void perf_test (){
     static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     srand(time(NULL));   // Initialization, should only be called once.
     FILE *fp;
-    fp=fopen("timer3.csv","w+");
+    fp=fopen("timer4.csv","w+");
     fprintf(fp,"naive, kmp, n size");
 
     while (len<=max) { 
@@ -42,7 +43,7 @@ void perf_test (){
         fprintf(fp,", %f, %d",total,len);
 	    free(text);
         free(pattern);
-        len+=10000;
+        len+=step;
     }
     fclose(fp);
 }
