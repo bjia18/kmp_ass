@@ -23,18 +23,22 @@ void stress_test(int N, int M){
   
   while (1) {
     int n = rand() % (N-3) + 3;      // Returns a pseudo-random integer between 3 and N.
-	int m = rand() % M + 1; 
+	  int m = rand() % M + 1; 
     
-	char *text = malloc(n);
+	  char *text = malloc(n);
     for (int i=0; i<n; i++){
-	  int pos = rand() % (int)(sizeof(charset) -1);
-      text[i] = charset[pos];      
+	    int pos = rand() % (int)(sizeof(charset) -1);
+      text[i] = charset[pos];
+      if (i==(n-1))
+        text[i]='\0';      
     }
 	
-	char *pattern = malloc(m);
+	  char *pattern = malloc(m);
     for (int i=0; i<m; i++){
-	  int pos = rand() % (int)(sizeof(charset) -1);
-      pattern[i] = charset[pos];      
+	    int pos = rand() % (int)(sizeof(charset) -1);
+      pattern[i] = charset[pos];
+      if (i==(m-1))
+        text[i]='\0';       
     }
     
     printf("text='%s', pattern='%s'\n", text, pattern);
@@ -46,14 +50,16 @@ void stress_test(int N, int M){
       printf("OK\n");
     else {
       printf("Wrong answer: correct=%d, got instead=%d\n", result1, result2);
-	  exit(0);
-	}
-	free(text);
-	free(pattern);
+	    exit(0);
+	  }
+	  free(text);
+	  free(pattern);
   }  
 }
 
 int main(int argc, char **argv ){
+  perf_test();
+  printf("perf_test in progress...\n");
   if (argc < 4){
     printf("To run: test <1> <text> <N> <pattern> <M>\n or test <2> <N> <M>\n");
     return 0;
